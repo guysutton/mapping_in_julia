@@ -38,16 +38,13 @@ end
 # Convert GBIF observations to Dataframe object
 df = DataFrames.DataFrame(observations)
 
-
 ######################################
 # Load shapefiles - Africa 
 ###################################### 
 
-# Specify URL where shapefile can be found 
-html = "https://raw.githubusercontent.com/guysutton/ThermalSampleR/master/data-raw/coreid_data_raw.csv"
-
 # Import the .shp file using Shapefile.jl
-example_data = Shapefile.Table(download(html))
+# Downloaded from: https://geoportal.icpac.net/layers/geonode%3Aafr_g2014_2013_0
+table = Shapefile.Table("./shapefiles/afr_g2014_2013_0.shp")
 
 ######################################
 # Make map
@@ -112,7 +109,7 @@ map = draw(
 )
 
 # Save high quality figure 
-save("figure_brachiaria_arrecta.png", px_per_unit = 6, map)
+save("./figures/figure_brachiaria_arrecta.png", px_per_unit = 6, map)
 
 
 
